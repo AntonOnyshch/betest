@@ -1,0 +1,15 @@
+{
+  "name": "light-test",
+  "version": "1.0.0",
+  "description": "Small tiny framework for test your js",
+  "main": "./lib/light-test.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["js", "test", "framework", "small", "tiny"],
+  "author": "Anton Onyshchenko",
+  "license": "MIT"
+}
