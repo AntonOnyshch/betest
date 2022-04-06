@@ -1,4 +1,4 @@
-export class LightTest {
+export class Betest {
 
     private testGroups = new Array();
 

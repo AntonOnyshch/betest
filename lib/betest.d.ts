@@ -1,4 +1,4 @@
-export declare class LightTest {
+export declare class Betest {
     private testGroups;
     constructor();
     add(params?: {

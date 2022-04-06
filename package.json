@@ -1,15 +1,24 @@
 {
-  "name": "light-test",
+  "name": "betest",
   "version": "1.0.0",
   "description": "Small tiny framework for test your js",
-  "main": "./lib/light-test.js",
+  "main": "./lib/betest.js",
+  "type": "module",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["js", "test", "framework", "small", "tiny"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AntonOnyshch/betest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AntonOnyshch/betest/issues"
+  },
+  "keywords": ["js", "test", "framework", "small", "tiny", "betest"],
+  "homepage": "https://github.com/AntonOnyshch/betest/blob/main/README.md",
   "author": "Anton Onyshchenko",
   "license": "MIT"
 }
