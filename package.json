@@ -1,6 +1,6 @@
 {
   "name": "betest",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Small tiny framework for test your js",
   "main": "./lib/betest.js",
   "type": "module",

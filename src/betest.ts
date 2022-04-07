@@ -1,11 +1,21 @@
+import { BetestGroup } from "./bGroup.js";
+import { BetestTestResult } from "./bTestResult.js";
+
 export class Betest {
 
-    private testGroups = new Array();
+    private testGroups: BetestGroup[];
 
-    constructor() {}
+    constructor() {
+        this.testGroups = new Array<BetestGroup>();
+    }
 
-    public add(params = {name: 'Group Name', tests: []}) {
-        this.testGroups.push(params);
+    public addTest(group: BetestGroup, testFunc: Function) {
+        const found_group = this.findGroup(group.name);
+        found_group.tests.push(testFunc);
+    }
+
+    public addGroup(group: BetestGroup) {
+        this.testGroups.push(group);
     }
 
     public runGroup(groupName = 'Group Name') {
@@ -25,7 +35,7 @@ export class Betest {
 
         const resultTable = new Array();
 
-        resultTable[test.name] = test();
+        resultTable.push({name: [test.name], result: test()});
 
         console.table(resultTable);
 
@@ -39,7 +49,7 @@ export class Betest {
     private runGroupTests(group: any) {
         console.group(group.name);
 
-        const resultTable = new Array();
+        const resultTable = new Array<BetestTestResult>();
         group.tests.forEach((test: Function) => {resultTable.push({name: test.name, result: test()})});
 
         console.table(resultTable);

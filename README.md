@@ -1,8 +1,12 @@
 # Betest
 
-Small and simple way to write and run JavaScript tests.
+**Always wanted to write simple tests for your code?**
+**Tired about heavy frameworks?**
+**Fed up by hundreds of files in your node_modules?**
 
-**Zero dependencies!**
+**I understand you!**
+
+**Betest** is a small and simple way to write and run JavaScript tests with **Zero dependencies!**.
 
 ## Installation
 ```console
@@ -46,7 +50,7 @@ const betest = new Betest();
 **Add your functions through method "Add" :**
 ```
 // First parameter is group name, second is array of functions
-betest.add(
+betest.addGroup(
     { 
         name: "Math group", tests: [testMultiplication, testSum] 
     }

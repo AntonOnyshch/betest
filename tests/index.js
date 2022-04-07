@@ -26,9 +26,10 @@ const testSum = function() {
 
 const betest = new Betest();
 
-betest.add(
+betest.addGroup(
     { 
-        name: "Math group", tests: [testMultiplication, testSum] 
+        name: "Math group", 
+        tests: [testMultiplication, testSum]
     }
 );
 
