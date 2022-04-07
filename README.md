@@ -36,8 +36,6 @@ const testSum = function() {
     }
 }
 
-betest.runAll();
-
 ```
 
 **Create instance of Betest :**
@@ -65,9 +63,8 @@ betest.runAll();
 betest.runGroup("Math Test");
 ```
 3. Run only one test in the group
+*Note: "Test Name" is the name of your function. In our example; "testMultiplication" or "testSum"*
 ```
- Note: "Test Name" is the name of your function. In our example; "testMultiplication" or "testSum"
-
 betest.runTest("Math Test", "Test Name");
 ```
 
@@ -91,7 +88,7 @@ betest.go(
 
 **And see results:**
 
-(index)|   (name)           | Values     |
-       | -------------------| -----------|
-    0  | testMultiplication | true       |
-    1  | testSum            | true       |
+|(index)|   (name)           | Values     |
+|       | -------------------| -----------|
+|    0  | testMultiplication | true       |
+|    1  | testSum            | true       |
