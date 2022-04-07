@@ -8,6 +8,7 @@ export declare class Betest {
     runGroup(groupName?: string): void;
     runAll(): void;
     runTest(groupName?: string, testName?: string): void;
+    go(tests: any[]): void;
     private runGroupTests;
     private findGroup;
     private findTest;

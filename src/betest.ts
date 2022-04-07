@@ -32,6 +32,10 @@ export class Betest {
         console.groupEnd();
     }
 
+    public go(tests: any[]) {
+        tests.forEach((group) => this.runGroupTests(group));
+    }
+
     private runGroupTests(group: any) {
         console.group(group.name);
 
