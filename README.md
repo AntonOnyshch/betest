@@ -90,6 +90,6 @@ betest.go(
 **And see results:**
 
 |(index)|   (name)           | Values     |
-|       | -------------------| -----------|
+|-------| -------------------| -----------|
 |    0  | testMultiplication | true       |
 |    1  | testSum            | true       |
