@@ -33,11 +33,11 @@ export class Betest {
         
         console.group(group.name);
 
-        const resultTable = new Array();
+        const result_table = new Array<BetestTestResult>();
 
-        resultTable.push({name: [test.name], result: test()});
+        result_table.push({name: test.name, result: test()});
 
-        console.table(resultTable);
+        console.table(result_table);
 
         console.groupEnd();
     }
@@ -49,10 +49,10 @@ export class Betest {
     private runGroupTests(group: any) {
         console.group(group.name);
 
-        const resultTable = new Array<BetestTestResult>();
-        group.tests.forEach((test: Function) => {resultTable.push({name: test.name, result: test()})});
+        const result_table = new Array<BetestTestResult>();
+        group.tests.forEach((test: Function) => {result_table.push({name: test.name, result: test()})});
 
-        console.table(resultTable);
+        console.table(result_table);
 
         console.groupEnd();
     }
