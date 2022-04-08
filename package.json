@@ -1,8 +1,8 @@
 {
   "name": "betest",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "Tiny framework for testing your js code",
-  "main": "./lib/betest.js",
+  "main": "./lib/index.js",
   "type": "module",
   "directories": {
     "lib": "lib"
