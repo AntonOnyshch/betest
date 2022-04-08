@@ -63,7 +63,7 @@ export class Betest {
         const group = this.findGroup(groupName);
         const test = this.findTest(group, testName);
         
-        console.group(group.name);
+        console.group(`\x1b[100m${group.name}\x1b[0m`);
 
         const result_table = new Array<BetestTestResult>();
 
@@ -88,7 +88,7 @@ export class Betest {
      * @param {BetestGroup | {name: "name", tests: []}} group A group with tests
      */
     private runGroupTests(group: BetestGroup | {name: "name", tests: []}): void {
-        console.group(group.name);
+        console.group(`\x1b[100m${group.name}\x1b[0m`);
 
         const result_table = new Array<BetestTestResult>();
         group.tests.forEach((test: Function) => {result_table.push({name: test.name, result: test()})});
@@ -109,6 +109,7 @@ export class Betest {
                 return group;
             }
         }
+
         return undefined;
     }
 
@@ -144,4 +145,5 @@ export class Betest {
 
         throw new Error(`Test "${testName}" is not found`);
     }
+
 }

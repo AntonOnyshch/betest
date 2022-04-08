@@ -58,12 +58,12 @@ const testSum = function() {
 
 ```
 
-**Create instance of Betest :**
+**Create an instance of Betest :**
 ```
 const betest = new Betest();
 ```
 
-**Add your functions through method "Add" :**
+**Add your named group and functions using method "addGroup" :**
 ```
 // First parameter is group name, second is array of functions
 betest.addGroup(
@@ -89,7 +89,7 @@ betest.runGroup("Math Test");
 betest.runTest("Math Test", "Test Name");
 ```
 
-**Or you can run anonyms tests**
+**Or you can run test on the fly**
 ```
 betest.go(
     [ // groups
