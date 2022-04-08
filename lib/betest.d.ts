@@ -26,7 +26,7 @@ export declare class Betest {
      * @param {string} groupName name of your group
      * @throws An error if group will not be found
      */
-    runGroup(groupName?: string): void;
+    runGroup(groupName: string): void;
     /**
      * Run all tests in all groups
      */
@@ -36,7 +36,7 @@ export declare class Betest {
      * @param {string} groupName Name of the group
      * @param {string} testName Name of the test
      */
-    runTest(groupName?: string, testName?: string): void;
+    runTest(groupName: string, testName: string): void;
     /**
      * Run anonyms tests.
      * @param {BetestGroup | {name: "name", tests: []}} groups Object wich contains param name of the group
@@ -45,7 +45,7 @@ export declare class Betest {
     go(groups: BetestGroup[]): void;
     /**
      * Run all tests inside one group
-     * @param group A group with tests
+     * @param {BetestGroup | {name: "name", tests: []}} group A group with tests
      */
     private runGroupTests;
     /**

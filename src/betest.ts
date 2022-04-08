@@ -42,7 +42,7 @@ export class Betest {
      * @param {string} groupName name of your group
      * @throws An error if group will not be found
      */
-    public runGroup(groupName = 'Group Name'): void {
+    public runGroup(groupName: string): void {
         const group = this.findGroup(groupName);
         this.runGroupTests(group);
     }
@@ -59,7 +59,7 @@ export class Betest {
      * @param {string} groupName Name of the group
      * @param {string} testName Name of the test
      */
-    public runTest(groupName: string = 'Group Name', testName: string = 'Test Name'): void {
+    public runTest(groupName: string, testName: string): void {
         const group = this.findGroup(groupName);
         const test = this.findTest(group, testName);
         
@@ -85,9 +85,9 @@ export class Betest {
 
     /**
      * Run all tests inside one group
-     * @param group A group with tests
+     * @param {BetestGroup | {name: "name", tests: []}} group A group with tests
      */
-    private runGroupTests(group: any): void {
+    private runGroupTests(group: BetestGroup | {name: "name", tests: []}): void {
         console.group(group.name);
 
         const result_table = new Array<BetestTestResult>();
@@ -118,7 +118,7 @@ export class Betest {
      * @returns Found group
      * @throws An error if group doesn't exist
      */
-    private findGroup(name: string = 'Group Name'): BetestGroup {
+    private findGroup(name: string): BetestGroup {
         const found_group = this.checkIfGroupExists(name);
 
         if(found_group === undefined) {
@@ -135,7 +135,7 @@ export class Betest {
      * @throws An error if test doesn't exist
      * @returns Function
      */
-    private findTest(group: BetestGroup, testName: string = 'Test Name'): Function {
+    private findTest(group: BetestGroup, testName: string): Function {
         for (const testFunc of group.tests) {
             if(testFunc.name === testName) {
                 return testFunc;
