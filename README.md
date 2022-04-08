@@ -6,11 +6,27 @@
 
 **I understand you!**
 
-**Betest** is a small and simple way to write and run JavaScript tests with **Zero dependencies!**.
+**Betest** is a small and simple way to write and run JavaScript tests with *zero dependencies!*
 
 ## Installation
 ```console
 npm install betest
+```
+
+## Usage
+
+*Assuming that you have folder "tests" and file "index.js" inside.*
+
+```console
+node ./tests/index.js
+```
+
+or add this to your **package.json**
+
+```
+  "scripts": {
+    "test": "node ./tests/index.js"
+  },
 ```
 
 ## Example
@@ -57,7 +73,7 @@ betest.addGroup(
 );
 ```
 
-**You can run all tests in all groups, either one group or only one test in group:**
+**You can run all tests in all groups, either one group or only one test in the group:**
 1. Run all tests in all groups
 ```
 betest.runAll();
