@@ -3,7 +3,7 @@ import * as mathTest from './math-test.js';
 import * as geometryTest from './geometry-test.js';
 import { ResultEmiters } from "../lib/results/results-emiters.js";
 
-const betest = new Betest(ResultEmiters.Table);
+const betest = new Betest(ResultEmiters.LineByLine);
 
 betest.addGroup(
     { 
