@@ -1,13 +1,20 @@
-import { BetestGroup } from "./bGroup.js";
+import { BetestGroup } from "./b-group.js";
+import { ResultEmiters } from "./results/results-emiters.js";
 /**
  * Contain list of named groups with tests
  */
 export declare class Betest {
     private testGroups;
-    constructor();
+    private resultEmiter;
+    /**
+     * Create ne Betest instance
+     * @param emitResults Choose how results will be shown in console.
+     * Default value is 0 which means "Table". @type {ResultEmiters}
+     */
+    constructor(emitResults: ResultEmiters);
     /**
      * Use this method to add your test to group.
-     * @param {string} groupName - A name of group wich will contain your test.
+     * @param {string} groupName - A name of group which will contain your test.
      * Note: your group should exist
      * @param {Function} testFunc - This is your function
      */
@@ -39,7 +46,7 @@ export declare class Betest {
     runTest(groupName: string, testName: string): void;
     /**
      * Run anonyms tests.
-     * @param {BetestGroup | {name: "name", tests: []}} groups Object wich contains param name of the group
+     * @param {BetestGroup | {name: "name", tests: []}} groups Object which contains param name of the group
      * and param tests with array of functions
      */
     go(groups: BetestGroup[]): void;
@@ -63,7 +70,7 @@ export declare class Betest {
     private findGroup;
     /**
      *
-     * @param {BetestGroup | {name: "name", tests: []}} group A group in wich tests will be seeking
+     * @param {BetestGroup | {name: "name", tests: []}} group A group in which tests will be seeking
      * @param {string} testName A name of the test you want to find
      * @throws An error if test doesn't exist
      * @returns Function

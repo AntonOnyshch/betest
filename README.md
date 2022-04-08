@@ -58,12 +58,20 @@ const testSum = function() {
 
 ```
 
-**Create an instance of Betest :**
+**Create an instance of Betest:**
 ```
 const betest = new Betest();
 ```
 
-**Add your named group and functions using method "addGroup" :**
+**You can choose how results will be look in console:**
+```
+const betest = new Betest(ResultEmiters.Table); // true/false
+```
+```
+const betest = new Betest(ResultEmiters.LineByLine); // PASS/FAIL
+```
+
+**Add your named group and functions using method "addGroup":**
 ```
 // First parameter is group name, second is array of functions
 betest.addGroup(

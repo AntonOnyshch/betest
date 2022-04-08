@@ -1,5 +1,9 @@
-import { BetestGroup } from "./bGroup.js";
-import { BetestTestResult } from "./bTestResult.js";
+import { BetestGroup } from "./b-group.js";
+import { BetestTestResult } from "./b-test-tesult.js";
+import { ResultEmiters } from "./results/results-emiters.js";
+import {ResultEmiter} from './results/result-emiter.js';
+import { TableResultEmiter } from "./results/table-emiter.js";
+import { LineResultEmiter } from "./results/line-emiter.js";
 
 /**
  * Contain list of named groups with tests
@@ -8,13 +12,32 @@ export class Betest {
 
     private testGroups: BetestGroup[];
 
-    constructor() {
+    private resultEmiter: ResultEmiter;
+
+    /**
+     * Create ne Betest instance
+     * @param emitResults Choose how results will be shown in console.
+     * Default value is 0 which means "Table". @type {ResultEmiters}
+     */
+    constructor(emitResults: ResultEmiters) {
         this.testGroups = new Array<BetestGroup>();
+
+        switch (emitResults) {
+            case ResultEmiters.Table: {
+                this.resultEmiter = new TableResultEmiter();
+            } break;
+            case ResultEmiters.LineByLine: {
+                this.resultEmiter = new LineResultEmiter();
+            } break;
+            default: {
+                this.resultEmiter = new TableResultEmiter();
+            } break;
+        }
     }
 
     /**
      * Use this method to add your test to group.
-     * @param {string} groupName - A name of group wich will contain your test.
+     * @param {string} groupName - A name of group which will contain your test.
      * Note: your group should exist
      * @param {Function} testFunc - This is your function
      */
@@ -69,14 +92,14 @@ export class Betest {
 
         result_table.push({name: test.name, result: test()});
 
-        console.table(result_table);
+        this.resultEmiter.emit(result_table);
 
         console.groupEnd();
     }
 
     /**
      * Run anonyms tests. 
-     * @param {BetestGroup | {name: "name", tests: []}} groups Object wich contains param name of the group
+     * @param {BetestGroup | {name: "name", tests: []}} groups Object which contains param name of the group
      * and param tests with array of functions
      */
     public go(groups: BetestGroup[]): void {
@@ -93,7 +116,7 @@ export class Betest {
         const result_table = new Array<BetestTestResult>();
         group.tests.forEach((test: Function) => {result_table.push({name: test.name, result: test()})});
 
-        console.table(result_table);
+        this.resultEmiter.emit(result_table);
 
         console.groupEnd();
     }
@@ -131,7 +154,7 @@ export class Betest {
 
     /**
      * 
-     * @param {BetestGroup | {name: "name", tests: []}} group A group in wich tests will be seeking
+     * @param {BetestGroup | {name: "name", tests: []}} group A group in which tests will be seeking
      * @param {string} testName A name of the test you want to find
      * @throws An error if test doesn't exist
      * @returns Function

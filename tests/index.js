@@ -1,9 +1,9 @@
 import { Betest } from "../lib/betest.js";
-import * as mathTest from './mathTest.js';
-import * as geometryTest from './geometryTest.js';
+import * as mathTest from './math-test.js';
+import * as geometryTest from './geometry-test.js';
+import { ResultEmiters } from "../lib/results/results-emiters.js";
 
-
-const betest = new Betest();
+const betest = new Betest(ResultEmiters.Table);
 
 betest.addGroup(
     { 
