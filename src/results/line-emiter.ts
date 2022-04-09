@@ -3,16 +3,23 @@ import { ResultEmiter } from "./result-emiter";
 
 export class LineResultEmiter implements ResultEmiter {
 
+    private passParams = {
+        resultValue: "PASS",
+        background: "42"
+    }
+
+    private failParams = {
+        resultValue: "FAIL",
+        background: "41"
+    }
+
     emit(results: BetestTestResult[]): void {
-        let resulValue: string;
-        
+        let resultParams: any; 
+
         for (const result of results) {
-            resulValue = result.result ? "PASS" : "FAIL";
-            if(result.result === true) {
-                console.log(`\x1b[42m${resulValue}\x1b[0m ${result.name}`);
-            } else {
-                console.log(`\x1b[41m${resulValue}\x1b[0m ${result.name}`);
-            }
+            resultParams = result.result ? this.passParams : this.failParams;
+
+            console.log(`\x1b[${resultParams.background}m${resultParams.resultValue}\x1b[0m ${result.name}`);
         }
     }
 }

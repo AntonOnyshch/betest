@@ -4,7 +4,6 @@
 **Tired about heavy frameworks?**
 **Fed up by hundreds of files in your node_modules?**
 
-**I understand you!**
 
 **Betest** is a small and simple way to write and run JavaScript tests with *zero dependencies!*
 

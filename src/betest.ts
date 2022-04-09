@@ -86,7 +86,7 @@ export class Betest {
         const group = this.findGroup(groupName);
         const test = this.findTest(group, testName);
         
-        console.group(`\x1b[100m${group.name}\x1b[0m\n`);
+        console.group(`\n\x1b[100m${group.name}\x1b[0m\n`);
 
         const result_table = new Array<BetestTestResult>();
 
@@ -111,7 +111,7 @@ export class Betest {
      * @param {BetestGroup | {name: "name", tests: []}} group A group with tests
      */
     private runGroupTests(group: BetestGroup | {name: "name", tests: []}): void {
-        console.group(`\x1b[100m${group.name}\x1b[0m\n`);
+        console.group(`\n\x1b[100m${group.name}\x1b[0m\n`);
 
         const result_table = new Array<BetestTestResult>();
         group.tests.forEach((test: Function) => {result_table.push({name: test.name, result: test()})});
