@@ -1,5 +1,9 @@
 import { BetestGroup } from "./b-group.js";
-import { ResultEmiters } from "./results/results-emiters.js";
+declare type BetestConstructorParams = {
+    results: {
+        showAs: string;
+    };
+};
 /**
  * Contain list of named groups with tests
  */
@@ -11,7 +15,7 @@ export declare class Betest {
      * @param emitResults Choose how results will be shown in console.
      * Default value is 0 which means "Table". @type {ResultEmiters}
      */
-    constructor(emitResults: ResultEmiters);
+    constructor(params: BetestConstructorParams);
     /**
      * Use this method to add your test to group.
      * @param {string} groupName - A name of group which will contain your test.
@@ -77,3 +81,4 @@ export declare class Betest {
      */
     private findTest;
 }
+export {};

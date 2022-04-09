@@ -5,6 +5,12 @@ import { ResultEmiter } from './results/result-emiter.js';
 import { TableResultEmiter } from "./results/table-emiter.js";
 import { LineResultEmiter } from "./results/line-emiter.js";
 
+type BetestConstructorParams = {
+    results: {
+        showAs: string
+    }
+}
+
 /**
  * Contain list of named groups with tests
  */
@@ -19,19 +25,26 @@ export class Betest {
      * @param emitResults Choose how results will be shown in console.
      * Default value is 0 which means "Table". @type {ResultEmiters}
      */
-    constructor(emitResults: ResultEmiters) {
+    constructor(params: BetestConstructorParams) {
         this.testGroups = new Array<BetestGroup>();
+        this.resultEmiter = new TableResultEmiter();
 
-        switch (emitResults) {
-            case ResultEmiters.Table: {
-                this.resultEmiter = new TableResultEmiter();
-            } break;
-            case ResultEmiters.LineByLine: {
-                this.resultEmiter = new LineResultEmiter();
-            } break;
-            default: {
-                this.resultEmiter = new TableResultEmiter();
-            } break;
+        if(params) {
+            if(params.results) {
+                if(params.results.showAs) {
+                    switch (params.results.showAs) {
+                        case "Table": {
+                            this.resultEmiter = new TableResultEmiter();
+                        } break;
+                        case "Line": {
+                            this.resultEmiter = new LineResultEmiter();
+                        } break;
+                        default: {
+                            this.resultEmiter = new TableResultEmiter();
+                        } break;
+                    }
+                }
+            }
         }
     }
 
