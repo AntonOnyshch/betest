@@ -12,7 +12,7 @@ export declare class Betest {
     private resultEmiter;
     /**
      * Create ne Betest instance
-     * @param emitResults Choose how results will be shown in console.
+     * @param {BetestConstructorParams} params Parameters for constructor.
      * Default value is 0 which means "Table". @type {ResultEmiters}
      */
     constructor(params: BetestConstructorParams);

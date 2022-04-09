@@ -1,6 +1,5 @@
 import { BetestGroup } from "./b-group.js";
 import { BetestTestResult } from "./b-test-tesult.js";
-import { ResultEmiters } from "./results/results-emiters.js";
 import { ResultEmiter } from './results/result-emiter.js';
 import { TableResultEmiter } from "./results/table-emiter.js";
 import { LineResultEmiter } from "./results/line-emiter.js";
@@ -22,7 +21,7 @@ export class Betest {
 
     /**
      * Create ne Betest instance
-     * @param emitResults Choose how results will be shown in console.
+     * @param {BetestConstructorParams} params Parameters for constructor.
      * Default value is 0 which means "Table". @type {ResultEmiters}
      */
     constructor(params: BetestConstructorParams) {

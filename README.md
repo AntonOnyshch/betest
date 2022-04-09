@@ -2,12 +2,20 @@
 
 # Betest
 
+
 **Always wanted to write simple tests for your code?**
 **Tired about heavy frameworks?**
 **Fed up by hundreds of files in your node_modules?**
 
 
 **Betest** is a small and simple way to write and run JavaScript tests with *zero dependencies!*
+
+
+# Table of content
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#example)
+- [ConstructorParams](#constructor-params)
 
 ## Installation
 ```console
@@ -124,3 +132,16 @@ betest.go(
 |-------| -------------------| -----------|
 |    0  | multiplication | true       |
 |    1  | sum            | true       |
+
+
+## Constructor Params
+
+```
+const betestParams = {
+    results: {
+        // 1. "Table" for table result.
+        // 2. "Line" for colorful PASS/FAIL message
+        showAs: string
+    }
+}
+```
