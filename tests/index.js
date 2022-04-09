@@ -3,7 +3,7 @@ import * as mathTest from './math-test.js';
 import * as geometryTest from './geometry-test.js';
 import { ResultEmiters } from "../lib/results/results-emiters.js";
 
-const betest = new Betest(ResultEmiters.LineByLine);
+const betest = new Betest(ResultEmiters.Table);
 
 betest.addGroup(
     { 
@@ -29,7 +29,7 @@ betest.runGroup("Math group");
 
 /** Run one test */
 console.log('\n\x1b[96m Run one test\x1b[0m');
-betest.runTest("Math group", "testSum");
+betest.runTest("Math group", "sum");
 
 /** Run test on the fly */
 console.log('\n\x1b[96m Run test on the fly\x1b[0m');
@@ -38,7 +38,7 @@ betest.go(
         { // one group
             name: "Geometry Tests",
             tests: [
-                function findSinusTest() {
+                function findSinus() {
                     const sinusOf90D = Math.sin(90 * Math.PI / 180 );
     
                     return sinusOf90D === 1;

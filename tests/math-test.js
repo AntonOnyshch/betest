@@ -1,4 +1,4 @@
-const testMultiplication = function() {
+const multiplication = function() {
     const res = 5 * 2;
 
     if(res === 10) {
@@ -8,7 +8,7 @@ const testMultiplication = function() {
     }
 }
 
-const testSum = function() {
+const sum = function() {
     const res = 5 + 2;
 
     if(res === 7) {
@@ -18,4 +18,4 @@ const testSum = function() {
     }
 }
 
-export const tests = [testMultiplication, testSum];
+export const tests = [multiplication, sum];

@@ -33,9 +33,9 @@ or add this to your **package.json**
 **Let's assume you have two test functions that do some work**
 
 ```
-import {Betest} from 'betest';
+import * as Betest from 'betest';
 
-const testMultiplication = function() {
+const multiplication = function() {
     const res = 5 * 2;
 
     if(res === 10) {
@@ -45,7 +45,7 @@ const testMultiplication = function() {
     }
 }
 
-const testSum = function() {
+const sum = function() {
     const res = 5 + 2;
 
     if(res === 7) {
@@ -59,15 +59,15 @@ const testSum = function() {
 
 **Create an instance of Betest:**
 ```
-const betest = new Betest();
+const betest = new Betest.Betest();
 ```
 
 **You can choose how results will be look in console:**
 ```
-const betest = new Betest(ResultEmiters.Table); // true/false
+const betest = new Betest(Betest.ResultEmiters.Table); // true/false
 ```
 ```
-const betest = new Betest(ResultEmiters.LineByLine); // PASS/FAIL
+const betest = new Betest(Betest.ResultEmiters.LineByLine); // Colorful PASS/FAIL
 ```
 
 **Add your named group and functions using method "addGroup":**
@@ -103,7 +103,7 @@ betest.go(
         { // one group
             name: "Geometry Tests",
             tests: [
-                function findSinusTest() {
+                function findSinus() {
                     const sinusOf90D = Math.sin(90 * 180 / Math.PI);
  
                     return sinusOf90D === 1;
@@ -118,5 +118,5 @@ betest.go(
 
 |(index)|   (name)           | Values     |
 |-------| -------------------| -----------|
-|    0  | testMultiplication | true       |
-|    1  | testSum            | true       |
+|    0  | multiplication | true       |
+|    1  | sum            | true       |

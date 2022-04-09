@@ -6,5 +6,5 @@ export class TableResultEmiter implements ResultEmiter {
     emit(results: BetestTestResult[]): void {
         console.table(results);
     }
-
+    
 }
