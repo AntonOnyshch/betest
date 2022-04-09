@@ -33,7 +33,7 @@ or add this to your **package.json**
 **Let's assume you have two test functions that do some work**
 
 ```
-import * as Betest from 'betest';
+import * as betest from 'betest';
 
 const multiplication = function() {
     const res = 5 * 2;
@@ -59,21 +59,21 @@ const sum = function() {
 
 **Create an instance of Betest:**
 ```
-const betest = new Betest.Betest();
+const bTest = new betest.Betest();
 ```
 
 **You can choose how results will be look in console:**
 ```
-const betest = new Betest(Betest.ResultEmiters.Table); // true/false
+const bTest = new betest.Betest(betest.ResultEmiters.Table); // true/false
 ```
 ```
-const betest = new Betest(Betest.ResultEmiters.LineByLine); // Colorful PASS/FAIL
+const bTest = new betest.Betest(betest.ResultEmiters.LineByLine); // Colorful PASS/FAIL
 ```
 
 **Add your named group and functions using method "addGroup":**
 ```
 // First parameter is group name, second is array of functions
-betest.addGroup(
+bTest.addGroup(
     { 
         name: "Math group", tests: [testMultiplication, testSum] 
     }
@@ -83,22 +83,22 @@ betest.addGroup(
 **You can run all tests in all groups, either one group or only one test in the group:**
 1. Run all tests in all groups
 ```
-betest.runAll();
+bTest.runAll();
 ```
 2. Run only one group's tests
 ```
-betest.runGroup("Math Test");
+bTest.runGroup("Math Test");
 ```
 3. Run only one test in the group
 
 *Note: "Test Name" is the name of your function. In our example; "testMultiplication" or "testSum"*
 ```
-betest.runTest("Math Test", "Test Name");
+bTest.runTest("Math Test", "Test Name");
 ```
 
 **Or you can run test on the fly**
 ```
-betest.go(
+bTest.go(
     [ // groups
         { // one group
             name: "Geometry Tests",
