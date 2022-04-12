@@ -87,7 +87,7 @@ const betest = new Betest(betestParams);
 betest.addGroup(
     { 
         name: "Math group", 
-        tests: [testMultiplication, testSum] 
+        tests: [multiplication, sum] 
     }
 );
 //Or
@@ -96,7 +96,7 @@ betest.addGroup(
         name: "Math group", 
         tests: [
             function testFunc() {
-
+                // Your test return true or false
             }
         ]
     }
