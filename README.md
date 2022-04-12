@@ -2,7 +2,6 @@
 
 # Betest
 
-
 **Always wanted to write simple tests for your code?**
 **Tired about heavy frameworks?**
 **Fed up by hundreds of files in your node_modules?**
@@ -19,7 +18,7 @@
 
 ## Installation
 ```console
-npm install betest
+npm install betest -D
 ```
 
 ## Usage
@@ -32,7 +31,7 @@ node ./tests/index.js
 
 or add this to your **package.json**
 
-```
+```json
   "scripts": {
     "test": "node ./tests/index.js"
   },
@@ -42,7 +41,7 @@ or add this to your **package.json**
 
 **Let's assume you have two test functions that do some work**
 
-```
+```javascript
 import {Betest} from 'betest';
 
 const multiplication = function() {
@@ -68,12 +67,12 @@ const sum = function() {
 ```
 
 **Create an instance of Betest:**
-```
+```javascript
 const betest = new Betest();
 ```
 
 **You can choose how results will be look in console using parameters object:**
-```
+```javascript
 betestParams = {
     results: {
         showAs: "Table" // or "Line"(Colorful PASS/FAIL)
@@ -83,7 +82,7 @@ const betest = new Betest(betestParams);
 ```
 
 **Add your named group and functions using method "addGroup":**
-```
+```javascript
 // First parameter is group name, second is array of functions
 betest.addGroup(
     { 
@@ -109,7 +108,7 @@ betest.runTest("Math Test", "Test Name");
 ```
 
 **Or you can run test on the fly**
-```
+```javascript
 betest.go(
     [ // groups
         { // one group
@@ -136,7 +135,7 @@ betest.go(
 
 ## Constructor Params
 
-```
+```javascript
 const betestParams = {
     results: {
         // 1. "Table" for table result.

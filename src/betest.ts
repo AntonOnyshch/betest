@@ -21,8 +21,7 @@ export class Betest {
 
     /**
      * Create ne Betest instance
-     * @param {BetestConstructorParams} params Parameters for constructor.
-     * Default value is 0 which means "Table". @type {ResultEmiters}
+     * @param {BetestConstructorParams} params Parameters for constructor {@link https://www.npmjs.com/package/betest#constructor-params}
      */
     constructor(params: BetestConstructorParams) {
         this.testGroups = new Array<BetestGroup>();
