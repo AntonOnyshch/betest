@@ -86,24 +86,36 @@ const betest = new Betest(betestParams);
 // First parameter is group name, second is array of functions
 betest.addGroup(
     { 
-        name: "Math group", tests: [testMultiplication, testSum] 
+        name: "Math group", 
+        tests: [testMultiplication, testSum] 
+    }
+);
+//Or
+betest.addGroup(
+    { 
+        name: "Math group", 
+        tests: [
+            function testFunc() {
+
+            }
+        ]
     }
 );
 ```
 
 **You can run all tests in all groups, either one group or only one test in the group:**
 1. Run all tests in all groups
-```
+```javascript
 betest.runAll();
 ```
 2. Run only one group's tests
-```
+```javascript
 betest.runGroup("Math Test");
 ```
 3. Run only one test in the group
 
 *Note: "Test Name" is the name of your function. In our example; "testMultiplication" or "testSum"*
-```
+```javascript
 betest.runTest("Math Test", "Test Name");
 ```
 

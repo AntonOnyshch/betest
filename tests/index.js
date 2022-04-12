@@ -1,6 +1,4 @@
 import { Betest } from "../lib/betest.js";
-import * as mathTest from './math-test.js';
-import * as geometryTest from './geometry-test.js';
 
 const betestParams = {
     results: {
@@ -13,13 +11,38 @@ const betest = new Betest(betestParams);
 betest.addGroup(
     { 
         name: "Math group", 
-        tests: mathTest.tests
+        tests: [
+            function multiplication() {
+                const res = 5 * 2;
+            
+                if(res === 10) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+            function sum() {
+                const res = 5 + 2;
+            
+                if(res === 7) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        ]
     }
 );
 betest.addGroup(
     { 
         name: "Geometry group", 
-        tests: geometryTest.tests
+        tests: [
+            function findHypotenuse() {
+                const sinusOf90D = Math.round(Math.sqrt(5 ** 2 + 5 ** 2));
+            
+                return sinusOf90D === 6; // answer is 7
+            }
+        ]
     }
 );
 console.log('\n\x1b[34m===============\nTEST STARTING...\n===============\n \x1b[0m \n');
