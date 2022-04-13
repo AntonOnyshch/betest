@@ -20,7 +20,7 @@
 ```console
 npm install betest --save-dev
 ```
-For beta see [Github](https://github.com/AntonOnyshch/betest/tree/2.0.0-beta.1) 
+For beta see [Github](https://github.com/AntonOnyshch/betest/tree/2.0.0-beta) 
 ```console
 npm install betest@beta --save-dev
 ```
