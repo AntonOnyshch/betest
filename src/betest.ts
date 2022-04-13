@@ -3,6 +3,7 @@ import { BetestTestResult } from "./b-test-tesult.js";
 import { ResultEmiter } from './results/result-emiter.js';
 import { TableResultEmiter } from "./results/table-emiter.js";
 import { LineResultEmiter } from "./results/line-emiter.js";
+import { BetestTest } from './b-test.js';
 
 type BetestConstructorParams = {
     results: {
@@ -52,9 +53,9 @@ export class Betest {
      * Note: your group should exist
      * @param {Function} testFunc - This is your function
      */
-    public addTest(groupName: string, testFunc: Function): void {
+    public addTest(groupName: string, test: BetestTest): void {
         const found_group = this.findGroup(groupName);
-        found_group.tests.push(testFunc);
+        found_group.tests.push(test);
     }
 
     /**
@@ -95,13 +96,13 @@ export class Betest {
      */
     public runTest(groupName: string, testName: string): void {
         const group = this.findGroup(groupName);
-        const test = this.findTest(group, testName);
+        const bTest = this.findTest(group, testName);
         
         console.group(`\n\x1b[100m${group.name}\x1b[0m\n`);
 
         const result_table = new Array<BetestTestResult>();
 
-        result_table.push({name: test.name, result: test()});
+        result_table.push({name: bTest.test.name, result: this.checkExpected(bTest.expected, bTest.test())});
 
         this.resultEmiter.emit(result_table);
 
@@ -125,7 +126,7 @@ export class Betest {
         console.group(`\n\x1b[100m${group.name}\x1b[0m\n`);
 
         const result_table = new Array<BetestTestResult>();
-        group.tests.forEach((test: Function) => {result_table.push({name: test.name, result: test()})});
+        group.tests.forEach((bTest: BetestTest) => {result_table.push({name: bTest.test.name, result: this.checkExpected(bTest.expected, bTest.test())})});
 
         this.resultEmiter.emit(result_table);
 
@@ -170,14 +171,50 @@ export class Betest {
      * @throws An error if test doesn't exist
      * @returns Function
      */
-    private findTest(group: BetestGroup, testName: string): Function {
-        for (const testFunc of group.tests) {
-            if(testFunc.name === testName) {
-                return testFunc;
+    private findTest(group: BetestGroup, testName: string): BetestTest {
+        for (const bTest of group.tests) {
+            if(bTest.test.name === testName) {
+                return bTest;
             }
         }
 
         throw new Error(`Test "${testName}" is not found`);
+    }
+
+    /**
+     * Compare expected and actual values
+     * @param {number | Array<any> | Object} expected The true result of your test
+     * @param {any} result Actual result
+     * @returns True if result and expected values are the same
+     */
+    private checkExpected(expected: any, result: any): Boolean {
+        if (expected instanceof Array) {
+            const expect = expected as Array<any>;
+            const res = result as Array<any>;
+            if(expect.length !== res.length) {
+                return false;
+            }
+            for (let i = 0; i < expect.length; i++) {
+               if(expect[i] instanceof Array) {
+                   for (let j = 0; j < expect[i].length; j++) {
+                       if(expect[i][j] !== result[i][j]) {
+                           return false;
+                       }
+                   }
+               } else {
+                   if(expect[i] !== result[i]) {
+                       return false;
+                   }
+               }
+            }
+
+            return true;
+             
+        } else if(expected instanceof Object) {
+            return JSON.stringify(expected) === JSON.stringify(result);
+        } else {
+            return expected === result;
+        }
     }
 
 }

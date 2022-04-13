@@ -7,44 +7,52 @@ const betestParams = {
 }
 
 const betest = new Betest(betestParams);
-
 betest.addGroup(
     { 
-        name: "Math group", 
+        name: "Example Group", 
         tests: [
-            function multiplication() {
-                const res = 5 * 2;
-            
-                if(res === 10) {
-                    return true;
-                } else {
-                    return false;
+            {// Expected object
+                expected: {
+                    fisrstName: "First Name",
+                    secondName: "Second Name"
+                },
+                data: {
+                    fisrstName: "First Name",
+                    secondName: "Second Name"
+                },
+                test: function checkObject() {
+                    return this.data;
                 }
             },
-            function sum() {
-                const res = 5 + 2;
-            
-                if(res === 7) {
-                    return true;
-                } else {
-                    return false;
+            {// Exptected number
+                expected: 7,
+                data: {
+                    cathetusA: 5 ** 2,
+                    cathetusB: 5 ** 2
+                },
+                test: function findHypotenuse() {
+                    return Math.round(Math.sqrt(this.data.cathetusA + this.data.cathetusB));
+                }
+            },
+            {// Expected two dimensional array
+                expected: [
+                    [6, -8, 1],
+                    [4, 1, 0],
+                    [2, 3, 5]
+                ],
+                test: function checkArrayEquality() {
+                    return [
+                        [6, -8, 1],
+                        [4, 1, 0],
+                        [2, 3, 5]
+                    ]
                 }
             }
         ]
     }
 );
-betest.addGroup(
-    { 
-        name: "Geometry group", 
-        tests: [
-            function findHypotenuse() {
-                const sinusOf90D = Math.round(Math.sqrt(5 ** 2 + 5 ** 2));
-            
-                return sinusOf90D === 6; // answer is 7
-            }
-        ]
-    }
-);
+
+
 console.log('\n\x1b[34m===============\nTEST STARTING...\n===============\n \x1b[0m \n');
 
 /** Run all tests */
@@ -53,23 +61,32 @@ betest.runAll();
 
 /** Run one group */
 console.log('\n\x1b[96m Run one group\x1b[0m');
-betest.runGroup("Math group");
+betest.runGroup("Example Group");
 
 /** Run one test */
 console.log('\n\x1b[96m Run one test\x1b[0m');
-betest.runTest("Math group", "sum");
+betest.runTest("Example Group", "findHypotenuse");
 
 /** Run test on the fly */
 console.log('\n\x1b[96m Run test on the fly\x1b[0m');
 betest.go(
     [ // groups
         { // one group
-            name: "Geometry Tests",
+            name: "Arrays",
             tests: [
-                function findSinus() {
-                    const sinusOf90D = Math.sin(90 * Math.PI / 180 );
-    
-                    return sinusOf90D === 1;
+                {
+                    expected: [
+                        [6, -8, 1],
+                        [4, 1, 0],
+                        [2, 3, 5]
+                    ],
+                    test: function checkArrayEquality() {
+                        return [
+                            [6, -8, 1],
+                            [4, 1, 0],
+                            [2, 3, 5]
+                        ]
+                    }
                 }
             ]
         }

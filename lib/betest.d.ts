@@ -1,4 +1,5 @@
 import { BetestGroup } from "./b-group.js";
+import { BetestTest } from './b-test.js';
 declare type BetestConstructorParams = {
     results: {
         showAs: string;
@@ -21,7 +22,7 @@ export declare class Betest {
      * Note: your group should exist
      * @param {Function} testFunc - This is your function
      */
-    addTest(groupName: string, testFunc: Function): void;
+    addTest(groupName: string, test: BetestTest): void;
     /**
      * Add new group
      * @param {BetestGroup | {name: "name", tests: []}} group A group you want to add
@@ -79,5 +80,12 @@ export declare class Betest {
      * @returns Function
      */
     private findTest;
+    /**
+     * Compare expected and actual values
+     * @param {number | Array<any> | Object} expected The true result of your test
+     * @param {any} result Actual result
+     * @returns True if result and expected values are the same
+     */
+    private checkExpected;
 }
 export {};

@@ -39,35 +39,10 @@ or add this to your **package.json**
 
 ## Example
 
-**Let's assume you have two test functions that do some work**
-
+**Create an instance of Betest:**
 ```javascript
 import {Betest} from 'betest';
 
-const multiplication = function() {
-    const res = 5 * 2;
-
-    if(res === 10) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-const sum = function() {
-    const res = 5 + 2;
-
-    if(res === 7) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-```
-
-**Create an instance of Betest:**
-```javascript
 const betest = new Betest();
 ```
 
@@ -83,20 +58,47 @@ const betest = new Betest(betestParams);
 
 **Add your named group and functions using method "addGroup":**
 ```javascript
-// First parameter is group name, second is array of functions
+
 betest.addGroup(
     { 
-        name: "Math group", 
-        tests: [multiplication, sum] 
-    }
-);
-//Or
-betest.addGroup(
-    { 
-        name: "Math group", 
+        name: "Example Group", 
         tests: [
-            function testFunc() {
-                // Your test return true or false
+            {// Expected object
+                expected: {
+                    fisrstName: "First Name",
+                    secondName: "Second Name"
+                },
+                data: {
+                    fisrstName: "First Name",
+                    secondName: "Second Name"
+                },
+                test: function checkObject() {
+                    return this.data;
+                }
+            },
+            {// Exptected number
+                expected: 7,
+                data: {
+                    cathetusA: 5 ** 2,
+                    cathetusB: 5 ** 2
+                },
+                test: function findHypotenuse() {
+                    return Math.round(Math.sqrt(this.data.cathetusA + this.data.cathetusB));
+                }
+            },
+            {// Expected two dimensional array
+                expected: [
+                    [6, -8, 1],
+                    [4, 1, 0],
+                    [2, 3, 5]
+                ],
+                test: function checkArrayEquality() {
+                    return [
+                        [6, -8, 1],
+                        [4, 1, 0],
+                        [2, 3, 5]
+                    ]
+                }
             }
         ]
     }
@@ -110,13 +112,13 @@ betest.runAll();
 ```
 2. Run only one group's tests
 ```javascript
-betest.runGroup("Math Test");
+betest.runGroup("Example Group");
 ```
 3. Run only one test in the group
 
 *Note: "Test Name" is the name of your function. In our example; "testMultiplication" or "testSum"*
 ```javascript
-betest.runTest("Math Test", "Test Name");
+betest.runTest("Example Group", "findHypotenuse");
 ```
 
 **Or you can run test on the fly**
