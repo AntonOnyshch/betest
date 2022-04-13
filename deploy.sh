@@ -13,7 +13,7 @@ fi
 git commit -m "$msg"
 
 # Push source and build repos.
-git push origin 2.0.0-beta.1
+git push origin 2.0.0-beta
 
 # Publish
 echo -e "\033[0;32mPublishing...\033[0m"

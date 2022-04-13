@@ -18,7 +18,11 @@
 
 ## Installation
 ```console
-npm install betest -D
+npm install betest --save-dev
+```
+For beta see [Github](https://github.com/AntonOnyshch/betest/tree/2.0.0-beta.1) 
+```console
+npm install betest@beta --save-dev
 ```
 
 ## Usage
