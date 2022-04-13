@@ -13,4 +13,4 @@ fi
 git commit -m "$msg"
 
 # Push source and build repos.
-git push origin 1.2.17
+git push origin main
