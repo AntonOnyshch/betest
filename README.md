@@ -120,7 +120,6 @@ betest.runGroup("Example Group");
 ```
 3. Run only one test in the group
 
-*Note: "Test Name" is the name of your function. In our example; "testMultiplication" or "testSum"*
 ```javascript
 betest.runTest("Example Group", "findHypotenuse");
 ```
@@ -131,13 +130,13 @@ betest.go(
     [ // groups
         { // one group
             name: "Geometry Tests",
-            tests: [
-                function findSinus() {
-                    const sinusOf90D = Math.sin(90 * 180 / Math.PI);
- 
-                    return sinusOf90D === 1;
+            tests: {
+                expected: 1,
+                data: 90,
+                test: function findSinus() {
+                    return Math.sin(this.data * 180 / Math.PI);
                 }
-            ]
+            }
         }
     ]
 );
