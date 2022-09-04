@@ -13,9 +13,9 @@ fi
 git commit -m "$msg"
 
 # Push source and build repos.
-git push origin 2.0.0
+git push origin 3.0.0
 
 # Publish
 echo -e "\033[0;32mPublishing...\033[0m"
 
-npm publish
+npm publish --tag=beta

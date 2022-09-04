@@ -5,6 +5,10 @@ import { TableResultEmiter } from "./results/table-emiter.js";
 import { LineResultEmiter } from "./results/line-emiter.js";
 import { BetestTest } from './b-test.js';
 
+export function start(params: BetestConstructorParams): Betest {
+    return new Betest(params);
+}
+
 type BetestConstructorParams = {
     results: {
         showAs: string

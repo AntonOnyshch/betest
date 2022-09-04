@@ -1,5 +1,3 @@
-**Betest is under active development. You may encounter significant changes.**
-
 # Betest
 
 **Always wanted to write simple tests for your code?**

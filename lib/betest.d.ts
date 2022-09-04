@@ -1,5 +1,6 @@
 import { BetestGroup } from "./b-group.js";
 import { BetestTest } from './b-test.js';
+export declare function start(params: BetestConstructorParams): Betest;
 declare type BetestConstructorParams = {
     results: {
         showAs: string;
