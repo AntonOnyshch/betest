@@ -11,7 +11,8 @@ betest.addGroup(
     { 
         name: "Example Group", 
         tests: [
-            {// Expected object
+            {
+                name: 'checkObject',
                 expected: {
                     fisrstName: "First Name",
                     secondName: "Second Name"
@@ -24,7 +25,8 @@ betest.addGroup(
                     return this.data;
                 }
             },
-            {// Exptected number
+            {   
+                name: 'findHypotenuse',
                 expected: 7,
                 data: {
                     cathetusA: 5 ** 2,
@@ -34,7 +36,8 @@ betest.addGroup(
                     return Math.round(Math.sqrt(this.data.cathetusA + this.data.cathetusB));
                 }
             },
-            {// Expected two dimensional array
+            {   
+                name: 'checkArrayEquality',
                 expected: [
                     [6, -8, 1],
                     [4, 1, 0],
@@ -75,6 +78,7 @@ betest.go(
             name: "Arrays",
             tests: [
                 {
+                    name: 'checkArrayEquality',
                     expected: [
                         [6, -8, 1],
                         [4, 1, 0],
