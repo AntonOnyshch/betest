@@ -12,32 +12,24 @@ betest.addGroup(
         name: "Example Group", 
         tests: [
             {
-                name: 'checkObject',
                 expected: {
                     fisrstName: "First Name",
                     secondName: "Second Name"
                 },
-                data: {
-                    fisrstName: "First Name",
-                    secondName: "Second Name"
-                },
                 test: function checkObject() {
-                    return this.data;
+                    return {
+                        fisrstName: "First Name",
+                        secondName: "Second Name"
+                    }
                 }
             },
             {   
-                name: 'findHypotenuse',
                 expected: 7,
-                data: {
-                    cathetusA: 5 ** 2,
-                    cathetusB: 5 ** 2
-                },
                 test: function findHypotenuse() {
-                    return Math.round(Math.sqrt(this.data.cathetusA + this.data.cathetusB));
+                    return Math.round(Math.sqrt(5 ** 2 + 5 ** 2));
                 }
             },
             {   
-                name: 'checkArrayEquality',
                 expected: [
                     [6, -8, 1],
                     [4, 1, 0],
@@ -78,7 +70,6 @@ betest.go(
             name: "Arrays",
             tests: [
                 {
-                    name: 'checkArrayEquality',
                     expected: [
                         [6, -8, 1],
                         [4, 1, 0],

@@ -106,7 +106,7 @@ export class Betest {
 
         const result_table = new Array<BetestTestResult>();
 
-        result_table.push({name: bTest.name, result: this.checkExpected(bTest.expected, bTest.test())});
+        result_table.push({name: bTest.test.name, result: this.checkExpected(bTest.expected, bTest.test())});
 
         this.resultEmiter.emit(result_table);
 
@@ -130,7 +130,7 @@ export class Betest {
         console.group(`\n\x1b[100m${group.name}\x1b[0m\n`);
 
         const result_table = new Array<BetestTestResult>();
-        group.tests.forEach((bTest: BetestTest) => {result_table.push({name: bTest.name, result: this.checkExpected(bTest.expected, bTest.test())})});
+        group.tests.forEach((bTest: BetestTest) => {result_table.push({name: bTest.test.name, result: this.checkExpected(bTest.expected, bTest.test())})});
 
         this.resultEmiter.emit(result_table);
 
@@ -177,7 +177,7 @@ export class Betest {
      */
     private findTest(group: BetestGroup, testName: string): BetestTest {
         for (const bTest of group.tests) {
-            if(bTest.name === testName) {
+            if(bTest.test.name === testName) {
                 return bTest;
             }
         }

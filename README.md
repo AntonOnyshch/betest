@@ -66,32 +66,24 @@ betest.addGroup(
         name: "Example Group", 
         tests: [
             {   
-                name: 'checkObject',
                 expected: {
                     fisrstName: "First Name",
                     secondName: "Second Name"
                 },
-                data: {
+                test: function checkObject() {
+                    return {
                     fisrstName: "First Name",
                     secondName: "Second Name"
-                },
-                test: function checkObject() {
-                    return this.data;
+                    }
                 }
             },
             {   
-                name: 'findHypotenuse',
                 expected: 7,
-                data: {
-                    cathetusA: 5 ** 2,
-                    cathetusB: 5 ** 2
-                },
                 test: function findHypotenuse() {
-                    return Math.round(Math.sqrt(this.data.cathetusA + this.data.cathetusB));
+                    return Math.round(Math.sqrt(5 ** 2 + 5 ** 2));
                 }
             },
             {   
-                name: 'checkArrayEquality',
                 expected: [
                     [6, -8, 1],
                     [4, 1, 0],
@@ -130,13 +122,10 @@ betest.runTest("Example Group", "findHypotenuse");
 betest.go(
     [ // groups
         { // one group
-            name: "Geometry Tests",
             tests: {
-                name: 'findSinus',
                 expected: 1,
-                data: 90,
                 test: function findSinus() {
-                    return Math.sin(this.data * 180 / Math.PI);
+                    return Math.sin(90 * 180 / Math.PI);
                 }
             }
         }
