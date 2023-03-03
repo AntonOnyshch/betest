@@ -1,10 +1,5 @@
 # Betest
 
-**Always wanted to write simple tests for your code?**
-**Tired about heavy frameworks?**
-**Fed up by hundreds of files in your node_modules?**
-
-
 **Betest** is a small and simple way to write and run JavaScript tests with *zero dependencies!*
 
 
